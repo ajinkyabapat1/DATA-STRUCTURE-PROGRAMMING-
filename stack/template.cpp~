@@ -1,0 +1,198 @@
+#include<iostream>
+#include<stdlib.h>
+using namespace std;
+template<class T >
+class stack1
+{
+  
+  public:
+  T *s;                           //int *s;
+ int size;
+ int tos;
+  stack1();
+  void push(T);                   //  void push(int);
+  T pop();                        //  int pop();
+  T peek();                       //  int peek();
+  bool IsFull();
+  bool IsEmpty();
+  void display();
+  void getsize(int );
+  ~stack1();
+  
+};
+        template<class T >
+	stack1<T> :: stack1()          //stack1 :: stack1()
+	{
+	s=NULL;
+	size=0;
+	tos= -1;
+	}
+	template<class T >
+	void stack1<T> :: getsize(int n)     //void stack1 :: getsize(int n)
+	{
+	s=new T[n];
+	size=n;
+	}
+	
+	template<class T >
+	
+	bool stack1<T> :: IsFull()
+	{
+	return  (tos == size-1);
+	}
+	
+	template<class T >
+	
+	bool stack1<T> ::IsEmpty()
+	{
+	return (tos == -1);
+	} 
+	
+	template<class T >
+	void stack1 <T> :: push(T ele)
+	{
+	if(!IsFull())
+	s[++tos]=ele;
+	else 
+	cout<<"\nstack is full"<<endl;
+	}
+	template<class T >
+	void stack1<T> :: display()
+	{
+	for (int i=tos;i>=0;i--)
+	cout<<"stack item is :"<<s[i]<<endl;
+	}
+	
+	template<class T >
+	 T stack1 <T> :: pop()
+	{
+	T x=-999;
+	if(!IsEmpty())
+	
+	{
+	x=s[tos--];
+	cout<<"deleted no is "<<x<<endl;
+        return x;
+	}
+	else
+	cout<<"\tStack is empty"<<endl;
+
+	}
+	template<class T >
+	
+	stack1<T> :: ~stack1()
+	{
+	delete s;
+	size= 0;
+	tos=-1;
+	}
+	template<class T >
+	T stack1<T> :: peek()
+	{
+	T x=-999;
+	if(!IsEmpty())
+	{x=s[tos];
+	cout<<"peeked value is"<<x<<endl;
+	return x;
+         }
+	else
+	cout<<"\tStack is empty"<<endl;
+	}
+	
+ int main()
+  {
+
+
+   stack1<char> m;
+   m.getsize(10);
+   m.push('a'
+
+  /* //stack1<int> s;
+   //stack1<float> l;
+   
+
+  int ch,a,c;
+  float b;
+  char z;
+  cout<<"\nEnter size of stack"<<endl;
+  cin>>c;
+  s.getsize(c);
+  l.getsize(c);
+  m.getsize(c);
+for(int i=0;i<100;i++)
+  {
+    cout<<"\nwhich operation do you want to perform"<<endl;
+    cout<<"1.PUSH \t 2.Delete 3.Display 4.peek"<<endl;
+    cin>>ch;
+
+  switch (ch)
+
+    {
+       case 1:
+        
+        cout<<"\nwhich number do you want to insert"<<endl;
+       
+        cin>z;
+        
+        m.push(z);
+        break;
+        
+        case 2:
+    
+        m.pop();
+        break;  
+     
+        case 3:
+     
+        m.display();
+        break;  
+
+        case 4:
+        
+        m.peek();
+        break;
+        
+        case 5:
+        exit (0);
+                         
+   }
+
+ }
+ /*cout<<"-------------------------float......................"<<endl;
+
+  for(int i=0;i<100;i++)
+    {
+
+
+      cout<<"\nwhich operation do you want to perform"<<endl;
+      cout<<"1.PUSH \t 2.Delete 3.Display 4.peek"<<endl;
+      cin>>ch;
+
+     switch (ch)
+
+         {
+            case 1:
+        
+                  cout<<"\nwhich number do you want to insert"<<endl;
+                  cin>>a;
+                  s.push(a);
+                  break;
+             
+            case 2:
+                  s.pop();
+                  break;  
+            case 3:
+                  s.display();
+       
+                  break;  
+            case 4:
+                  s.peek();
+        
+                  break;
+                         
+         } 
+
+    }*/
+}
+
+
