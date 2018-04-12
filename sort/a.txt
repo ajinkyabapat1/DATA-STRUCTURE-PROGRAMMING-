@@ -1,0 +1,105 @@
+#include<iostream>
+using namespace std;
+template<class T>
+class Bubble_sort
+{
+
+         T *a;
+         int size;
+public:
+        
+         void sort(int  sz,T *arr)
+         {
+                  size=sz;
+                  a = new T [size];
+                  a=arr;
+                int  flag,i,j;
+                  
+                  
+                  
+                  for(i=0;i<size-1;i++)             //       [7 6 5 4 3]
+                  {
+                           flag=0;
+                           for(j=0;j<=size-2;j++)
+                           {
+                                    if( a[j]>a[j+1])          
+                                    {
+                                             T temp=0;
+                                             temp=a[j];                          //temp=a;         temp=a;
+                                             a[j]=a[j+1];                        //b=a;            a=b;
+                                             a[j+1]=temp;                        //a=temp;         b=temp;
+                                             flag=1; 
+                                    }
+                           }
+                           if(flag==0)
+                                    break;
+                  }
+
+                  cout<<"\nyour shorted element : \n";
+                  for(int i=0;i<size;i++)
+                           cout<<a[i]<<" ";
+         }
+
+
+};
+
+
+int main()
+{
+
+//************************************  using Template<int> **************************************************
+         int sz,*a;
+         
+         cout<<"How many elements you wants to enter? : ";
+         cin>>sz;
+         a=new int[sz];              //varible_name=new data_type_of_varible[size];
+         
+        cout<<"Now enter your "<<sz<<" elements. \n";
+         for(int i=0;i<sz;i++)
+                  cin>>a[i];                //a[   ]
+         cout<<"Your unsorted elements. \n";
+         for(int i=0;i<sz;i++)
+         cout<<a[i]<<" ";
+         
+         Bubble_sort<int> bs;
+         bs.sort(sz,a); 
+
+//************************************  using Template<char> **************************************************
+         char *ac;
+         
+         cout<<"\nHow many elements  of *char* you wants to enter? : ";
+         cin>>sz;
+         ac=new char[sz];              //varible_name=new data_type_of_varible[size];
+         
+        cout<<"Now enter your "<<sz<<" elements. \n";
+         for(int i=0;i<sz;i++)
+                  cin>>ac[i];                //a[   ]
+         cout<<"Your unsorted elements. \n";
+         for(int i=0;i<sz;i++)
+         cout<<ac[i]<<" ";
+         
+         Bubble_sort<char> bs_c;         
+         
+         bs_c.sort(sz,ac); 
+         
+ //*****************************************using Template<float>***************************************************************        
+       float *af;
+         
+         cout<<"\nHow many elements you wants to enter? : ";
+         cin>>sz;
+         af=new float[sz];              //varible_name=new data_type_of_varible[size];
+         
+        cout<<"Now enter your "<<sz<<" elements. \n";
+         for(int i=0;i<sz;i++)
+                  cin>>af[i];                //a[   ]
+         cout<<"Your unsorted elements. \n";
+        
+         for(int i=0;i<sz;i++)
+          cout<<af[i]<<" ";
+         Bubble_sort<float> bs_f;         
+         
+         bs_f.sort(sz,af); 
+         
+cout<<"\n";
+return 0;
+}

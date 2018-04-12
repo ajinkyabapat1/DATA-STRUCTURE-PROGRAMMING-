@@ -1,0 +1,108 @@
+#include<iostream>
+using namespace std;
+template<class T>
+class heap_sort1
+{
+//         int *a,n,c;
+         T *a,size,temp;
+         public:
+      
+         heap_sort1()
+         {
+                  a=NULL;
+                  size=0;
+         }
+
+         void get_data(int *,int);
+         void heap_Sort();
+         void build_heap(int,int);
+        
+         void display();
+
+};
+template<class T>
+void heap_sort1<T>::get_data(int *arr,int n)
+{
+         a=new int[n];
+         size=n;
+         a=arr;
+}
+
+template<class T>
+void heap_sort1<T>::heap_Sort()
+{
+         int i,j;
+
+         for(i=(size/2)-1;i>=0;i--)
+                build_heap(i,size);
+
+         for(j=0;j<size-1;j++)
+         {
+                  temp=a[i];
+                  a[i]=a[j];
+                  a[j]=temp;
+                  
+                  build_heap(0,size-1-j);
+         }
+
+}
+template<class T>
+void heap_sort1<T>::build_heap(int i,int n)
+{
+         T c, temp=a[i];
+
+         for( ;2*i+1<=n;i=c)
+         {
+                  c=2*i+1;
+                  
+                  if(c+1<n && a[c+1]>a[c])
+                          {
+                                c++;
+                           }
+                                            if(temp<a[c])
+                                               {
+                                                a[i]=a[c];
+                                               }
+                  else
+                           break;
+         }   
+         a[i]=temp;
+}
+template<class T>
+void heap_sort1<T>::display()               
+{
+         for(int i=0;i<size;i++)
+                  cout<<a[i]<<" ";
+}
+
+int main()
+{
+
+         int sz;
+         int *a,n;
+
+         cout<<"How many elements you wants to enter? : ";
+         cin>>sz;
+         a=new int[sz];              
+
+         cout<<"Now enter your "<<sz<<" elements. \n";
+         for(int i=0;i<sz;i++)
+         cin>>a[i];      
+
+         heap_sort1<int> bs;
+
+
+         bs.get_data(a,sz);
+
+         cout<<"\n######################## Unsorted list ###################\n";
+         bs.display(); 
+
+
+         bs.heap_Sort();     
+         //bs.build_heap(sz,n);
+         cout<<"\n######################## Sorted list ###################\n";
+         bs.display(); 
+
+         cout<<"\n";
+         return 0;
+}
